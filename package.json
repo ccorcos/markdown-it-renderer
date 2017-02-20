@@ -1,0 +1,22 @@
+{
+  "name": "markdown-it-renderer",
+  "version": "0.0.2",
+  "description": "An abstract syntax tree (AST) parser and renderer for Markdown using markdown-it.",
+  "main": "src/index.js",
+  "keywords": [
+    "markdown",
+    "markdown-it"
+  ],
+  "author": "Chet Corcos <ccorcos@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "htmlparser": "^1.7.7",
+    "markdown-it": "^8.2.2"
+  },
+  "devDependencies": {
+    "ava": "^0.18.1"
+  },
+  "scripts": {
+    "test": "ava"
+  }
+}
