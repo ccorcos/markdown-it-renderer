@@ -1,14 +1,14 @@
 {
   "name": "markdown-it-renderer",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "An abstract syntax tree (AST) parser and renderer for Markdown using markdown-it.",
   "main": "dist/index.js",
   "keywords": [
     "markdown",
-    "markdown-it"
-  ],
-  "files": [
-    "dist"
+		"markdown-it",
+		"renderer",
+		"ast",
+		"component"
   ],
   "author": "Chet Corcos <ccorcos@gmail.com>",
   "license": "MIT",
@@ -22,7 +22,8 @@
     "typescript": "^2.6.2"
   },
   "scripts": {
-    "test": "ava",
-    "build": "babel -d dist src"
+    "build": "rm -rf lib && tsc",
+		"test": "npm run build && ava lib/test",
+		"prepare": "npm run test && cp package.json lib/src && cd lib/src && npm publish"
   }
 }

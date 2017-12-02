@@ -54,6 +54,6 @@ test("string renderer", t => {
 
 	assert({
 		md: "This is a *markdown* string.",
-		html: "<p >This is a <em >markdown</em> string.</p>\n",
+		html: "<p >This is a <em >markdown</em> string.</p>",
 	})
 })
