@@ -7,11 +7,14 @@ export default class MarkdownParser {
 	private md: MarkdownIt.MarkdownIt
 	private html: HtmlParser
 
-	constructor(options: MarkdownIt.Options = {}) {
+	constructor(options: MarkdownIt.Options = {}, plugins: Array<any> = []) {
 		this.md = new MarkdownIt({
 			...options,
 			xhtmlOut: true,
 		})
+		for (const plugin of plugins) {
+			this.md = this.md.use(plugin)
+		}
 		this.html = new HtmlParser({
 			verbose: false,
 			ignoreWhitespace: true,
