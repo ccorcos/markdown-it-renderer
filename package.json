@@ -1,8 +1,8 @@
 {
   "name": "markdown-it-renderer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An abstract syntax tree (AST) parser and renderer for Markdown using markdown-it.",
-  "main": "dist/index.js",
+  "main": "index.js",
   "keywords": [
     "markdown",
 		"markdown-it",
@@ -24,6 +24,6 @@
   "scripts": {
     "build": "rm -rf lib && tsc",
 		"test": "npm run build && ava lib/test",
-		"prepare": "npm run test && cp package.json lib/src && cd lib/src && npm publish"
+		"release": "npm run test && cp package.json lib/src && cd lib/src && npm publish"
   }
 }
