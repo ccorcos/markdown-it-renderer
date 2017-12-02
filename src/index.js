@@ -1,4 +1,4 @@
 module.exports = {
-  AstRenderer: require('./ast-renderer'),
-  MarkdownParser: require('./markdown-parser'),
+	AstRenderer: require("./ast-renderer"),
+	MarkdownParser: require("./markdown-parser"),
 }
