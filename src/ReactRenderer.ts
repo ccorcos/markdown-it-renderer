@@ -4,7 +4,7 @@ import AstRenderer, { AstRendererOptions } from "./AstRenderer"
 
 export default class ReactRenderer extends Renderer<React.ReactNode> {
 	constructor(
-		options: AstRendererOptions<string> = {},
+		options: AstRendererOptions<React.ReactNode> = {},
 		plugins: Array<any> = []
 	) {
 		const merged = {
