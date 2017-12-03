@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-renderer",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "An abstract syntax tree (AST) parser and renderer for Markdown using markdown-it.",
   "main": "index.js",
   "keywords": [
@@ -15,7 +15,9 @@
   "dependencies": {
     "htmlparser": "^1.7.7",
     "markdown-it": "^8.2.2",
-    "react": "^16.2.0"
+    "markdown-it-component": "^1.1.0",
+    "react": "^16.2.0",
+    "unescape": "^1.0.1"
   },
   "devDependencies": {
     "@types/markdown-it": "0.0.4",

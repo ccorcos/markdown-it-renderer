@@ -18,9 +18,12 @@ const renderer = new ReactRenderer({
 		if (name === "p") {
 			return <p className="custom-paragraph" children={children}/>
 		}
+		if (name === "Counter") {
+			return <Counter delta={props.delta}/>
+		}
 	}
 })
 
-const result = renderer.render(`This is a *markdown* string`)
+const result = renderer.render(`This is a *markdown* string. [Counter]{delta: 10}`)
 ReactDOM.render(result, document.querySelector("#root"))
 ```

@@ -44,7 +44,7 @@ function simplifyTree(nodes: Array<any>): Array<AstNode> {
 				type: "tag",
 				tag: node.name,
 				props: node.attribs || {},
-				children: simplifyTree(node.children),
+				children: simplifyTree(node.children || []),
 			} as AstNode
 		} else {
 			return {

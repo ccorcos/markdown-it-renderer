@@ -1,4 +1,6 @@
 import * as React from "react"
+import * as unescape from "unescape"
+import * as MarkdownItComponent from "markdown-it-component"
 import Renderer from "./Renderer"
 import AstRenderer, { AstRendererOptions } from "./AstRenderer"
 
@@ -14,15 +16,18 @@ export default class ReactRenderer extends Renderer<React.ReactNode> {
 					: React.createElement("main", {}, ...children),
 			text: value => (options.text ? options.text(value) : value),
 			tag: (name, props, children) => {
+				const actualProps = props["json-data"]
+					? JSON.parse(unescape(props["json-data"]))
+					: props
 				if (options.tag) {
-					const result = options.tag(name, props, children)
+					const result = options.tag(name, actualProps, children)
 					if (result !== undefined) {
 						return result
 					}
 				}
-				return React.createElement(name, props, ...children)
+				return React.createElement(name, actualProps, ...children)
 			},
 		}
-		super(merged, plugins)
+		super(merged, [...plugins, MarkdownItComponent({ jsonData: true })])
 	}
 }
