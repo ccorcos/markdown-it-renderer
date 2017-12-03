@@ -2,21 +2,30 @@ import { AstNode } from "./MarkdownParser"
 
 // Recursively renders the markdown AST given a map of renderers.
 
-export interface AstRendererOptions<RenderedNode> {
+export interface AstRendererArgs<RenderedNode> {
 	root: (children: Array<RenderedNode>) => RenderedNode
 	text: (children: string) => RenderedNode
-	tags: {
-		[key: string]: (
-			props: { [key: string]: string },
-			children: Array<RenderedNode>
-		) => RenderedNode
-	}
+	tag: (
+		name: string,
+		props: { [key: string]: string },
+		children: Array<RenderedNode>
+	) => RenderedNode
+}
+
+export interface AstRendererOptions<RenderedNode> {
+	root?: (children: Array<RenderedNode>) => RenderedNode
+	text?: (children: string) => RenderedNode
+	tag?: (
+		name: string,
+		props: { [key: string]: string },
+		children: Array<RenderedNode>
+	) => RenderedNode | undefined
 }
 
 export default class AstRenderer<RenderedNode> {
-	private options: AstRendererOptions<RenderedNode>
+	private options: AstRendererArgs<RenderedNode>
 
-	constructor(options: AstRendererOptions<RenderedNode>) {
+	constructor(options: AstRendererArgs<RenderedNode>) {
 		this.options = options
 	}
 
@@ -24,12 +33,11 @@ export default class AstRenderer<RenderedNode> {
 		if (node.type === "text") {
 			return this.options.text(node.value)
 		} else {
-			const renderFn = this.options.tags[node.tag]
-			if (!renderFn) {
-				throw new Error("`" + node.tag + "` renderer not defined")
-			}
-			const children = node.children.map(this.renderNode)
-			return renderFn(node.props, children)
+			return this.options.tag(
+				node.tag,
+				node.props,
+				node.children.map(this.renderNode)
+			)
 		}
 	}
 

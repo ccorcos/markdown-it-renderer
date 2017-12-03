@@ -1,3 +1,2 @@
-import MarkdownParser from "./MarkdownParser"
-import AstRenderer from "./AstRenderer"
-export { AstRenderer, MarkdownParser }
+import Renderer from "./Renderer"
+export default Renderer
