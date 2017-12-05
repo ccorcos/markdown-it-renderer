@@ -14,7 +14,8 @@ export default class ReactRenderer extends Renderer<React.ReactNode> {
 				options.root
 					? options.root(children)
 					: React.createElement("main", {}, ...children),
-			text: value => (options.text ? options.text(value) : value),
+			text: value =>
+				options.text ? options.text(unescape(value)) : unescape(value),
 			tag: (name, props, children) => {
 				const actualProps = props["json-data"]
 					? JSON.parse(unescape(props["json-data"]))
