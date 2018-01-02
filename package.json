@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-renderer",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "An abstract syntax tree (AST) parser and renderer for Markdown using markdown-it.",
   "main": "index.js",
   "keywords": [

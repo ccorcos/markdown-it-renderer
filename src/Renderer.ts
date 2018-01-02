@@ -1,5 +1,5 @@
 import AstRenderer, { AstRendererArgs } from "./AstRenderer"
-import MarkdownParser from "./MarkdownParser"
+import MarkdownParser, { AstNode } from "./MarkdownParser"
 
 export default class Renderer<RenderedNode> {
 	private parser: MarkdownParser
@@ -24,7 +24,15 @@ export default class Renderer<RenderedNode> {
 		this.renderer = new AstRenderer(options)
 	}
 
-	render(markdown: string) {
-		return this.renderer.render(this.parser.parse(markdown))
+	renderMarkdown(markdown: string) {
+		return this.renderer.render(this.parser.markdownToAst(markdown))
+	}
+
+	renderHtml(html: string) {
+		return this.renderer.render(this.parser.htmlToAst(html))
+	}
+
+	renderAst(ast: Array<AstNode>) {
+		return this.renderer.render(ast)
 	}
 }

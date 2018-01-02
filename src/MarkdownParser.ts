@@ -30,7 +30,7 @@ export default class MarkdownParser {
 		return simplifyTree(ast)
 	}
 
-	parse = (markdown: string) => {
+	markdownToAst = (markdown: string) => {
 		return this.htmlToAst(this.markdownToHtml(markdown))
 	}
 }
