@@ -21,10 +21,17 @@ export default class MarkdownParser {
 		})
 	}
 
-	public parse = (markdown: string) => {
-		const html = this.md.render(markdown)
+	markdownToHtml = (markdown: string) => {
+		return this.md.render(markdown)
+	}
+
+	htmlToAst = (html: string) => {
 		const ast = this.html.parse(html)
 		return simplifyTree(ast)
+	}
+
+	parse = (markdown: string) => {
+		return this.htmlToAst(this.markdownToHtml(markdown))
 	}
 }
 
