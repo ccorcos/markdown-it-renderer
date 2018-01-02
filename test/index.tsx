@@ -14,7 +14,7 @@ test("string renderer", t => {
 	const renderer = new StringRenderer()
 
 	const assert = (args: { md: string; html: string }) => {
-		t.is(renderer.render(args.md), args.html)
+		t.is(renderer.renderMarkdown(args.md), args.html)
 	}
 
 	assert({
@@ -28,7 +28,9 @@ test("react renderer", t => {
 
 	const assert = (args: { md: string; html: string }) => {
 		t.is(
-			ReactDOMServer.renderToStaticMarkup(renderer.render(args.md) as any),
+			ReactDOMServer.renderToStaticMarkup(renderer.renderMarkdown(
+				args.md
+			) as any),
 			args.html
 		)
 	}
@@ -50,7 +52,9 @@ test("react component renderer", t => {
 
 	const assert = (args: { md: string; html: string }) => {
 		t.is(
-			ReactDOMServer.renderToStaticMarkup(renderer.render(args.md) as any),
+			ReactDOMServer.renderToStaticMarkup(renderer.renderMarkdown(
+				args.md
+			) as any),
 			args.html
 		)
 	}
