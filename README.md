@@ -24,6 +24,6 @@ const renderer = new ReactRenderer({
 	}
 })
 
-const result = renderer.render(`This is a *markdown* string. [Counter]{delta: 10}`)
+const result = renderer.renderMarkdown(`This is a *markdown* string. [Counter]{delta: 10}`)
 ReactDOM.render(result, document.querySelector("#root"))
 ```
